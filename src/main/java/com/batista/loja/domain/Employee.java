@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Employee implements Serializable {
@@ -17,6 +19,10 @@ public class Employee implements Serializable {
 	private Long id;
 	private String name;
 	private Integer age;
+	
+	@ManyToOne
+	@JoinColumn(name = "office_id")
+	private Office office;
 
 	public Employee() {
 	}
