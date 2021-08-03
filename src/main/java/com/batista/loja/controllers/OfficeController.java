@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,12 +25,11 @@ public class OfficeController {
 		List<OfficeDTO> list = officeService.getAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<?> save(@PathVariable Long id){
-		OfficeDTO OfficeDTO = officeService.getById(id);
-		officeService.save(OfficeDTO);
-		
-		return ResponseEntity.ok().body(OfficeDTO);
+	public ResponseEntity<OfficeDTO> save(@RequestBody OfficeDTO dto) {
+		dto = officeService.save(dto);
+		return ResponseEntity.ok().body(dto);
+
 	}
 }

@@ -1,9 +1,7 @@
 package com.batista.loja.dto;
 
 import java.math.BigDecimal;
-import java.util.List;
 
-import com.batista.loja.domain.Employee;
 import com.batista.loja.domain.Office;
 
 public class OfficeDTO {
@@ -15,7 +13,7 @@ public class OfficeDTO {
 	public OfficeDTO() {
 	}
 
-	public OfficeDTO(Long id, String name, BigDecimal salary, List<Employee> employees) {
+	public OfficeDTO(Long id, String name, BigDecimal salary) {
 		this.id = id;
 		this.name = name;
 		this.salary = salary;
