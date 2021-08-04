@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +28,21 @@ public class OfficeController {
 		return ResponseEntity.ok().body(list);
 	}
 
-	@PostMapping
-	public ResponseEntity<OfficeDTO> save(@RequestBody OfficeDTO dto) {
-		dto = officeService.save(dto);
-		return ResponseEntity.ok().body(dto);
+	@GetMapping("/{id}")
+	public ResponseEntity<OfficeDTO> getById(@PathVariable Long id) {
+		OfficeDTO officeDTO = officeService.getById(id);
+		return ResponseEntity.ok().body(officeDTO);
+	}
 
+	@PostMapping
+	public ResponseEntity<OfficeDTO> save(@RequestBody OfficeDTO officeDTO) {
+		officeDTO = officeService.save(officeDTO);
+		return ResponseEntity.ok().body(officeDTO);
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+		officeService.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 }

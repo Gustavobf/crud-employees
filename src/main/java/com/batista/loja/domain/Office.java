@@ -18,6 +18,7 @@ public class Office implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_office")
 	private Long id;
 
 	@Column(name = "name_office")

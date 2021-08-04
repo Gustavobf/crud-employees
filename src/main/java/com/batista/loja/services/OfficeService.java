@@ -32,4 +32,8 @@ public class OfficeService {
 		office = officeRepository.save(office);
 		return new OfficeDTO(office);
 	}
+	
+	public void delete(Long id) {
+		officeRepository.deleteById(id);
+	}
 }
