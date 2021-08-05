@@ -2,15 +2,19 @@ package com.batista.loja.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Office implements Serializable {
@@ -26,8 +30,9 @@ public class Office implements Serializable {
 
 	private BigDecimal salary;
 
-	@OneToMany(mappedBy = "office")
-	private List<Employee> employees;
+	@JsonIgnore
+	@OneToMany(mappedBy = "office", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Employee> employees = new ArrayList<>();
 
 	public Office() {
 	}

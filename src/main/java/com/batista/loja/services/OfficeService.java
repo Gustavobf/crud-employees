@@ -30,10 +30,20 @@ public class OfficeService {
 	public OfficeDTO save(OfficeDTO dto) {
 		Office office = new Office(null, dto.getName(), dto.getSalary());
 		office = officeRepository.save(office);
-		return new OfficeDTO(office);
+		OfficeDTO officeDTO = new OfficeDTO(office);
+		return officeDTO;
 	}
 	
 	public void delete(Long id) {
 		officeRepository.deleteById(id);
 	}
+	
+	public OfficeDTO update(Long id, OfficeDTO dto) {
+		Office office = new Office(id, dto.getName(), dto.getSalary());
+		officeRepository.save(office);
+		OfficeDTO officeDTO = new OfficeDTO(office);
+		return officeDTO;
+		
+	}
+	
 }

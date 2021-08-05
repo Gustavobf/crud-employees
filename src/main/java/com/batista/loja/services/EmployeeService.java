@@ -22,4 +22,29 @@ public class EmployeeService {
 		return employees.stream().map(employee -> new EmployeeDTO(employee)).collect(Collectors.toList());
 	}
 
+	public EmployeeDTO getById(Long id) {
+		Employee employee = employeeRepository.getById(id);
+		EmployeeDTO employeeDTO = new EmployeeDTO(employee);
+		return employeeDTO;
+	}
+
+	public EmployeeDTO save(EmployeeDTO dto) {
+		Employee employee = new Employee(null, dto.getName(), dto.getAge(), dto.getOffice());
+		employee = employeeRepository.save(employee);
+		EmployeeDTO employeeDTO = new EmployeeDTO(employee);
+		return employeeDTO;
+	}
+
+	public void delete(Long id) {
+		employeeRepository.deleteById(id);
+	}
+
+	public EmployeeDTO update(Long id, EmployeeDTO dto) {
+		Employee employee = new Employee(id, dto.getName(), dto.getAge(), dto.getOffice());
+		employeeRepository.save(employee);
+		EmployeeDTO employeeDTO = new EmployeeDTO(employee);
+		return employeeDTO;
+
+	}
+
 }
