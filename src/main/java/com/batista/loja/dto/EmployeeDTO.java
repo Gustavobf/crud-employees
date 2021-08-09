@@ -1,7 +1,6 @@
 package com.batista.loja.dto;
 
 import com.batista.loja.domain.Employee;
-import com.batista.loja.domain.Office;
 
 public class EmployeeDTO {
 
@@ -9,23 +8,23 @@ public class EmployeeDTO {
 	private String name;
 	private Integer age;
 
-	private Office office;
+	private OfficeDTO officeDTO;
 
 	public EmployeeDTO() {
 	}
 
-	public EmployeeDTO(Long id, String name, Integer age, Office office) {
+	public EmployeeDTO(Long id, String name, Integer age, OfficeDTO officeDTO) {
 		this.id = id;
 		this.name = name;
 		this.age = age;
-		this.office = office;
+		this.officeDTO = officeDTO;
 	}
 
 	public EmployeeDTO(Employee entity) {
 		id = entity.getId();
 		name = entity.getName();
 		age = entity.getAge();
-//		office = new OfficeDTO();
+		officeDTO = new OfficeDTO(entity.getOffice());
 	}
 
 	public Long getId() {
@@ -52,12 +51,12 @@ public class EmployeeDTO {
 		this.age = age;
 	}
 
-	public Office getOffice() {
-		return office;
+	public OfficeDTO getOfficeDTO() {
+		return officeDTO;
 	}
 
-	public void setOffice(Office office) {
-		this.office = office;
+	public void setOfficeDTO(OfficeDTO officeDTO) {
+		this.officeDTO = officeDTO;
 	}
 
 }

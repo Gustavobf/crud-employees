@@ -26,31 +26,31 @@ public class OfficeController {
 	@GetMapping
 	public ResponseEntity<List<OfficeDTO>> getAll() {
 		List<OfficeDTO> list = officeService.getAll();
-		return ResponseEntity.ok().body(list);
+		return ResponseEntity.status(200).body(list);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<OfficeDTO> getById(@PathVariable Long id) {
 		OfficeDTO officeDTO = officeService.getById(id);
-		return ResponseEntity.ok().body(officeDTO);
+		return ResponseEntity.status(200).body(officeDTO);
 	}
 
 	@PostMapping
 	public ResponseEntity<OfficeDTO> save(@RequestBody OfficeDTO officeDTO) {
 		officeDTO = officeService.save(officeDTO);
-		return ResponseEntity.ok().body(officeDTO);
+		return ResponseEntity.status(201).body(officeDTO);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		officeService.delete(id);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.status(204).build();
 	}
-	
+
 	@PutMapping("/{id}")
 	public ResponseEntity<OfficeDTO> update(@PathVariable Long id, @RequestBody OfficeDTO dto) {
 		OfficeDTO officeDTO = officeService.update(id, dto);
-		return ResponseEntity.ok().body(officeDTO);
+		return ResponseEntity.status(200).body(officeDTO);
 	}
-	
+
 }

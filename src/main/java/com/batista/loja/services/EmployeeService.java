@@ -7,14 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.batista.loja.domain.Employee;
+import com.batista.loja.domain.Office;
 import com.batista.loja.dto.EmployeeDTO;
 import com.batista.loja.repositories.EmployeeRepository;
+import com.batista.loja.repositories.OfficeRepository;
 
 @Service
 public class EmployeeService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
+
+	@Autowired
+	private OfficeRepository officeRepository;
 
 	public List<EmployeeDTO> getAll() {
 
@@ -29,7 +34,8 @@ public class EmployeeService {
 	}
 
 	public EmployeeDTO save(EmployeeDTO dto) {
-		Employee employee = new Employee(null, dto.getName(), dto.getAge(), dto.getOffice());
+		Office office = officeRepository.getById(dto.getOfficeDTO().getId());
+		Employee employee = new Employee(null, dto.getName(), dto.getAge(), office);
 		employee = employeeRepository.save(employee);
 		EmployeeDTO employeeDTO = new EmployeeDTO(employee);
 		return employeeDTO;
@@ -40,7 +46,8 @@ public class EmployeeService {
 	}
 
 	public EmployeeDTO update(Long id, EmployeeDTO dto) {
-		Employee employee = new Employee(id, dto.getName(), dto.getAge(), dto.getOffice());
+		Office office = officeRepository.getById(dto.getOfficeDTO().getId());
+		Employee employee = new Employee(id, dto.getName(), dto.getAge(), office);
 		employeeRepository.save(employee);
 		EmployeeDTO employeeDTO = new EmployeeDTO(employee);
 		return employeeDTO;
