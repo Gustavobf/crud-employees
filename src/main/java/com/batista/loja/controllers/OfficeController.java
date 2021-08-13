@@ -2,6 +2,8 @@ package com.batista.loja.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,7 +38,7 @@ public class OfficeController {
 	}
 
 	@PostMapping
-	public ResponseEntity<OfficeDTO> save(@RequestBody OfficeDTO officeDTO) {
+	public ResponseEntity<OfficeDTO> save(@Valid @RequestBody OfficeDTO officeDTO) {
 		officeDTO = officeService.save(officeDTO);
 		return ResponseEntity.status(201).body(officeDTO);
 	}
@@ -48,7 +50,7 @@ public class OfficeController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<OfficeDTO> update(@PathVariable Long id, @RequestBody OfficeDTO dto) {
+	public ResponseEntity<OfficeDTO> update(@PathVariable Long id, @Valid @RequestBody OfficeDTO dto) {
 		OfficeDTO officeDTO = officeService.update(id, dto);
 		return ResponseEntity.status(200).body(officeDTO);
 	}

@@ -2,6 +2,8 @@ package com.batista.loja.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,7 +38,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping
-	public ResponseEntity<EmployeeDTO> save(@RequestBody EmployeeDTO employeeDTO) {
+	public ResponseEntity<EmployeeDTO> save(@Valid @RequestBody EmployeeDTO employeeDTO) {
 		employeeDTO = employeeService.save(employeeDTO);
 		return ResponseEntity.status(201).body(employeeDTO);
 	}
@@ -48,7 +50,7 @@ public class EmployeeController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<EmployeeDTO> update(@PathVariable Long id, @RequestBody EmployeeDTO dto) {
+	public ResponseEntity<EmployeeDTO> update(@PathVariable Long id, @Valid @RequestBody EmployeeDTO dto) {
 		EmployeeDTO employeeDTO = employeeService.update(id, dto);
 		return ResponseEntity.status(200).body(employeeDTO);
 	}

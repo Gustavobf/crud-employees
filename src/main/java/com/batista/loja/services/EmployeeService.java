@@ -3,6 +3,8 @@ package com.batista.loja.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,7 @@ public class EmployeeService {
 		return employeeDTO;
 	}
 
+	@Transactional
 	public EmployeeDTO save(EmployeeDTO dto) {
 		Office office = officeRepository.getById(dto.getOfficeDTO().getId());
 		Employee employee = new Employee(null, dto.getName(), dto.getAge(), office);
@@ -41,6 +44,7 @@ public class EmployeeService {
 		return employeeDTO;
 	}
 
+	@Transactional
 	public void delete(Long id) {
 		employeeRepository.deleteById(id);
 	}

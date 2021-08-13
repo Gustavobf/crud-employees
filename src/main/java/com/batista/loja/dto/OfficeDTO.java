@@ -2,12 +2,17 @@ package com.batista.loja.dto;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.batista.loja.domain.Office;
 
 public class OfficeDTO {
 
 	private Long id;
+
+	@NotEmpty
 	private String name;
+
 	private BigDecimal salary;
 
 	public OfficeDTO() {

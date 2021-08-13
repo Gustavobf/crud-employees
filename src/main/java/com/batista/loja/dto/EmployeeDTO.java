@@ -1,11 +1,18 @@
 package com.batista.loja.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.batista.loja.domain.Employee;
 
 public class EmployeeDTO {
 
 	private Long id;
+
+	@NotEmpty
 	private String name;
+
+	@NotNull
 	private Integer age;
 
 	private OfficeDTO officeDTO;
