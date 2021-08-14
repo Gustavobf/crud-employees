@@ -31,6 +31,11 @@ public class OfficeService {
 
 	@Transactional
 	public OfficeDTO save(OfficeDTO dto) {
+		
+		if ((dto.getName() != null) && (dto.getName().length() < 3)) {
+			throw new RuntimeException("Field name is not big enough.");
+		}
+		
 		Office office = new Office(null, dto.getName(), dto.getSalary());
 		office = officeRepository.save(office);
 		OfficeDTO officeDTO = new OfficeDTO(office);

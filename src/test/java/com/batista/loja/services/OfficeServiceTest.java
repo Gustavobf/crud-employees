@@ -1,0 +1,47 @@
+package com.batista.loja.services;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.math.BigDecimal;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.batista.loja.domain.Office;
+import com.batista.loja.dto.OfficeDTO;
+import com.batista.loja.repositories.OfficeRepository;
+
+@SpringBootTest
+public class OfficeServiceTest {
+
+	@InjectMocks
+	OfficeService officeServiceMock;
+
+	@Mock
+	OfficeRepository officeRepository;
+
+	@Test
+	public void saveMethodTest() {
+		
+		//New Office
+		Mockito.when(officeRepository.save(Mockito.any(Office.class)))
+				.thenReturn(new Office(1L, "TestOffice", new BigDecimal(1552.5)));
+
+		//Domain to DTO 
+		OfficeDTO officeDTO = new OfficeDTO();
+		officeDTO.setName("TestOffice");
+		officeDTO.setSalary(new BigDecimal(1552.5));
+		
+		//Save method
+		OfficeDTO returnedDTO = officeServiceMock.save(officeDTO);
+		
+		//Asserting equals
+		assertEquals(1L, returnedDTO.getId());
+		assertEquals("TestOffice", returnedDTO.getName());
+		assertEquals(new BigDecimal(1552.5), returnedDTO.getSalary());
+	}
+
+}
