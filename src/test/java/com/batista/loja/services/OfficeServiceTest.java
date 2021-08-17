@@ -28,12 +28,12 @@ public class OfficeServiceTest {
 		
 		//New Office
 		Mockito.when(officeRepository.save(Mockito.any(Office.class)))
-				.thenReturn(new Office(1L, "TestOffice", new BigDecimal(1552.5)));
+				.thenReturn(new Office(1L, "TestOffice", new BigDecimal(2000)));
 
 		//Domain to DTO 
 		OfficeDTO officeDTO = new OfficeDTO();
 		officeDTO.setName("TestOffice");
-		officeDTO.setSalary(new BigDecimal(1552.5));
+		officeDTO.setSalary(new BigDecimal(2000));
 		
 		//Save method
 		OfficeDTO returnedDTO = officeServiceMock.save(officeDTO);
@@ -41,7 +41,7 @@ public class OfficeServiceTest {
 		//Asserting equals
 		assertEquals(1L, returnedDTO.getId());
 		assertEquals("TestOffice", returnedDTO.getName());
-		assertEquals(new BigDecimal(1552.5), returnedDTO.getSalary());
+		assertEquals(new BigDecimal(2000), returnedDTO.getSalary());
 	}
 
 }

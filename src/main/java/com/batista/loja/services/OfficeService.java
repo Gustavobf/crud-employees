@@ -1,5 +1,6 @@
 package com.batista.loja.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +15,8 @@ import com.batista.loja.repositories.OfficeRepository;
 
 @Service
 public class OfficeService {
+	
+	public static final BigDecimal MINIMUM_WAGE = new BigDecimal(1125);
 
 	@Autowired
 	private OfficeRepository officeRepository;
@@ -32,8 +35,15 @@ public class OfficeService {
 	@Transactional
 	public OfficeDTO save(OfficeDTO dto) {
 		
-		if ((dto.getName() != null) && (dto.getName().length() < 3)) {
-			throw new RuntimeException("Field name is not big enough.");
+		Integer nameLength = dto.getName().length();
+		Boolean nameIsNull = dto.getName() == null;
+		
+		if (!nameIsNull && (nameLength < 3 || nameLength > 50)) {
+			throw new RuntimeException("Field name length is not correct.");
+		}
+		
+		if (dto.getSalary().compareTo(MINIMUM_WAGE) <= 0){
+			throw new RuntimeException("Salary is not enough.");
 		}
 		
 		Office office = new Office(null, dto.getName(), dto.getSalary());

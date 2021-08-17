@@ -37,6 +37,22 @@ public class EmployeeService {
 
 	@Transactional
 	public EmployeeDTO save(EmployeeDTO dto) {
+		
+		Integer nameLength = dto.getName().length();
+		Boolean nameIsNull = dto.getName() == null;
+		
+		if (dto.getOfficeDTO() == null) {
+			throw new RuntimeException("An Office is required.");
+		}
+		
+		if (nameIsNull && (nameLength < 3 || nameLength > 50)) {
+			throw new RuntimeException("Field Employee name length is not correct.");
+		}
+		
+		if (dto.getAge() < 18) {
+			throw new RuntimeException("Cannot be under 18.");
+		}
+		
 		Office office = officeRepository.getById(dto.getOfficeDTO().getId());
 		Employee employee = new Employee(null, dto.getName(), dto.getAge(), office);
 		employee = employeeRepository.save(employee);
