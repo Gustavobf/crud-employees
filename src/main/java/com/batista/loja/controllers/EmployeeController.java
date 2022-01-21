@@ -19,7 +19,7 @@ import com.batista.loja.dto.EmployeeDTO;
 import com.batista.loja.services.EmployeeService;
 
 @RestController
-@RequestMapping(value = "/employee")
+@RequestMapping(value = "/api/employees")
 public class EmployeeController {
 
 	@Autowired

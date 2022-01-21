@@ -8,4 +8,6 @@ import com.batista.loja.domain.Office;
 @Repository
 public interface OfficeRepository extends JpaRepository<Office, Long> {
 
+	Office findByName(String name);
+	
 }

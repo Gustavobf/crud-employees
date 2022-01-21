@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.batista.loja.dto.OfficeDTO;
 import com.batista.loja.services.OfficeService;
 
 @RestController
-@RequestMapping(value = "/office")
+@RequestMapping(value = "/api/offices")
 public class OfficeController {
 
 	@Autowired
@@ -34,6 +35,12 @@ public class OfficeController {
 	@GetMapping("/{id}")
 	public ResponseEntity<OfficeDTO> getById(@PathVariable Long id) {
 		OfficeDTO officeDTO = officeService.getById(id);
+		return ResponseEntity.status(200).body(officeDTO);
+	}
+	
+	@GetMapping("/findByName")
+	public ResponseEntity<OfficeDTO> getByName(@RequestParam("name") String name) {
+		OfficeDTO officeDTO = officeService.getByName(name);
 		return ResponseEntity.status(200).body(officeDTO);
 	}
 

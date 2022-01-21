@@ -4,6 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.batista.loja.domain.Employee;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EmployeeDTO {
 
@@ -15,6 +16,7 @@ public class EmployeeDTO {
 	@NotNull
 	private Integer age;
 
+	@JsonProperty("office")
 	private OfficeDTO officeDTO;
 
 	public EmployeeDTO() {
