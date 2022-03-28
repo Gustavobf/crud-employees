@@ -1,4 +1,4 @@
-package com.batista.loja.services;
+package com.batista.company.services;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -9,9 +9,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.batista.loja.domain.Office;
-import com.batista.loja.dto.OfficeDTO;
-import com.batista.loja.repositories.OfficeRepository;
+import com.batista.company.domain.Office;
+import com.batista.company.dto.OfficeDTO;
+import com.batista.company.repositories.OfficeRepository;
 
 @Service
 public class OfficeService {

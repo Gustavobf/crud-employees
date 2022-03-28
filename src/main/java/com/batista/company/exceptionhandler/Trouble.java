@@ -1,4 +1,4 @@
-package com.batista.loja.exceptionhandler;
+package com.batista.company.exceptionhandler;
 
 import java.time.OffsetDateTime;
 

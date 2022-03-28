@@ -1,4 +1,4 @@
-package com.batista.loja.config;
+package com.batista.company.config;
 
 import java.util.Arrays;
 

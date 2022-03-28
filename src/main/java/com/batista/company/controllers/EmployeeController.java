@@ -1,4 +1,4 @@
-package com.batista.loja.controllers;
+package com.batista.company.controllers;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.batista.loja.dto.EmployeeDTO;
-import com.batista.loja.services.EmployeeService;
+import com.batista.company.dto.EmployeeDTO;
+import com.batista.company.services.EmployeeService;
 
 @RestController
 @RequestMapping(value = "/api/employees")

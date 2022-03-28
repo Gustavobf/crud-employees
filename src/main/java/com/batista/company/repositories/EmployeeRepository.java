@@ -1,9 +1,9 @@
-package com.batista.loja.repositories;
+package com.batista.company.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.batista.loja.domain.Employee;
+import com.batista.company.domain.Employee;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {

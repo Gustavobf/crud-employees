@@ -1,9 +1,9 @@
-package com.batista.loja.dto;
+package com.batista.company.dto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import com.batista.loja.domain.Employee;
+import com.batista.company.domain.Employee;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EmployeeDTO {

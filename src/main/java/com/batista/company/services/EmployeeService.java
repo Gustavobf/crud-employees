@@ -1,4 +1,4 @@
-package com.batista.loja.services;
+package com.batista.company.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,11 +8,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.batista.loja.domain.Employee;
-import com.batista.loja.domain.Office;
-import com.batista.loja.dto.EmployeeDTO;
-import com.batista.loja.repositories.EmployeeRepository;
-import com.batista.loja.repositories.OfficeRepository;
+import com.batista.company.domain.Employee;
+import com.batista.company.domain.Office;
+import com.batista.company.dto.EmployeeDTO;
+import com.batista.company.repositories.EmployeeRepository;
+import com.batista.company.repositories.OfficeRepository;
 
 @Service
 public class EmployeeService {

@@ -1,4 +1,4 @@
-package com.batista.loja.domain;
+package com.batista.company.domain;
 
 import java.io.Serializable;
 import java.util.Objects;

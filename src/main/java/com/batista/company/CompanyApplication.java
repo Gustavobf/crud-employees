@@ -1,13 +1,13 @@
-package com.batista.loja;
+package com.batista.company;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LojaApplication {
+public class CompanyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LojaApplication.class, args);
+		SpringApplication.run(CompanyApplication.class, args);
 	}
 
 }

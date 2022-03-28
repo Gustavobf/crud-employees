@@ -1,10 +1,10 @@
-package com.batista.loja.dto;
+package com.batista.company.dto;
 
 import java.math.BigDecimal;
 
 import javax.validation.constraints.NotEmpty;
 
-import com.batista.loja.domain.Office;
+import com.batista.company.domain.Office;
 
 public class OfficeDTO {
 

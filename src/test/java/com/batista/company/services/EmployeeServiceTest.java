@@ -1,4 +1,4 @@
-package com.batista.loja.services;
+package com.batista.company.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,12 +11,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.batista.loja.domain.Employee;
-import com.batista.loja.domain.Office;
-import com.batista.loja.dto.EmployeeDTO;
-import com.batista.loja.dto.OfficeDTO;
-import com.batista.loja.repositories.EmployeeRepository;
-import com.batista.loja.repositories.OfficeRepository;
+import com.batista.company.domain.Employee;
+import com.batista.company.domain.Office;
+import com.batista.company.dto.EmployeeDTO;
+import com.batista.company.dto.OfficeDTO;
+import com.batista.company.repositories.EmployeeRepository;
+import com.batista.company.repositories.OfficeRepository;
+import com.batista.company.services.EmployeeService;
 
 @SpringBootTest
 public class EmployeeServiceTest {

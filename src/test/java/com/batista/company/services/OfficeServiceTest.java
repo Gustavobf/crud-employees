@@ -1,4 +1,4 @@
-package com.batista.loja.services;
+package com.batista.company.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -10,9 +10,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.batista.loja.domain.Office;
-import com.batista.loja.dto.OfficeDTO;
-import com.batista.loja.repositories.OfficeRepository;
+import com.batista.company.domain.Office;
+import com.batista.company.dto.OfficeDTO;
+import com.batista.company.repositories.OfficeRepository;
+import com.batista.company.services.OfficeService;
 
 @SpringBootTest
 public class OfficeServiceTest {
