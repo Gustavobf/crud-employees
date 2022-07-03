@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,33 +26,38 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
+	@ApiOperation("Returns a list with all employees")
 	@GetMapping
 	public ResponseEntity<List<EmployeeDTO>> getAll() {
-		List<EmployeeDTO> list = employeeService.getAll();
+		final List<EmployeeDTO> list = employeeService.getAll();
 		return ResponseEntity.status(200).body(list);
 	}
 
+	@ApiOperation("Returns an employee based on its id")
 	@GetMapping("/{id}")
-	public ResponseEntity<EmployeeDTO> getById(@PathVariable Long id) {
-		EmployeeDTO employeeDTO = employeeService.getById(id);
+	public ResponseEntity<EmployeeDTO> getById(@PathVariable final Long id) {
+		final EmployeeDTO employeeDTO = employeeService.getById(id);
 		return ResponseEntity.status(200).body(employeeDTO);
 	}
 
+	@ApiOperation("Saves an employee")
 	@PostMapping
 	public ResponseEntity<EmployeeDTO> save(@Valid @RequestBody EmployeeDTO employeeDTO) {
 		employeeDTO = employeeService.save(employeeDTO);
 		return ResponseEntity.status(201).body(employeeDTO);
 	}
 
+	@ApiOperation("Deletes an employee based on its id")
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> delete(@PathVariable Long id) {
+	public ResponseEntity<?> delete(@PathVariable final Long id) {
 		employeeService.delete(id);
 		return ResponseEntity.status(204).build();
 	}
 
+	@ApiOperation("Updates an employee based on its id")
 	@PutMapping("/{id}")
-	public ResponseEntity<EmployeeDTO> update(@PathVariable Long id, @Valid @RequestBody EmployeeDTO dto) {
-		EmployeeDTO employeeDTO = employeeService.update(id, dto);
+	public ResponseEntity<EmployeeDTO> update(@PathVariable final Long id, @Valid @RequestBody final EmployeeDTO dto) {
+		final EmployeeDTO employeeDTO = employeeService.update(id, dto);
 		return ResponseEntity.status(200).body(employeeDTO);
 	}
 

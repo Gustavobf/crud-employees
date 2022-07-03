@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,39 +27,44 @@ public class OfficeController {
 	@Autowired
 	private OfficeService officeService;
 
+	@ApiOperation("Returns a list of offices")
 	@GetMapping
 	public ResponseEntity<List<OfficeDTO>> getAll() {
-		List<OfficeDTO> list = officeService.getAll();
+		final List<OfficeDTO> list = officeService.getAll();
 		return ResponseEntity.status(200).body(list);
 	}
-
+	@ApiOperation("Returns an office based on its id")
 	@GetMapping("/{id}")
-	public ResponseEntity<OfficeDTO> getById(@PathVariable Long id) {
-		OfficeDTO officeDTO = officeService.getById(id);
-		return ResponseEntity.status(200).body(officeDTO);
-	}
-	
-	@GetMapping("/findByName")
-	public ResponseEntity<OfficeDTO> getByName(@RequestParam("name") String name) {
-		OfficeDTO officeDTO = officeService.getByName(name);
+	public ResponseEntity<OfficeDTO> getById(@PathVariable final Long id) {
+		final OfficeDTO officeDTO = officeService.getById(id);
 		return ResponseEntity.status(200).body(officeDTO);
 	}
 
+	@ApiOperation("Returns an office based on its name")
+	@GetMapping("/findByName")
+	public ResponseEntity<OfficeDTO> getByName(@RequestParam("name") final String name) {
+		final OfficeDTO officeDTO = officeService.getByName(name);
+		return ResponseEntity.status(200).body(officeDTO);
+	}
+
+	@ApiOperation("Saves an office")
 	@PostMapping
 	public ResponseEntity<OfficeDTO> save(@Valid @RequestBody OfficeDTO officeDTO) {
 		officeDTO = officeService.save(officeDTO);
 		return ResponseEntity.status(201).body(officeDTO);
 	}
 
+	@ApiOperation("Deletes an office based on its id")
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> delete(@PathVariable Long id) {
+	public ResponseEntity<?> delete(@PathVariable final Long id) {
 		officeService.delete(id);
 		return ResponseEntity.status(204).build();
 	}
 
+	@ApiOperation("Updates an office based on its id")
 	@PutMapping("/{id}")
-	public ResponseEntity<OfficeDTO> update(@PathVariable Long id, @Valid @RequestBody OfficeDTO dto) {
-		OfficeDTO officeDTO = officeService.update(id, dto);
+	public ResponseEntity<OfficeDTO> update(@PathVariable final Long id, @Valid @RequestBody final OfficeDTO dto) {
+		final OfficeDTO officeDTO = officeService.update(id, dto);
 		return ResponseEntity.status(200).body(officeDTO);
 	}
 
